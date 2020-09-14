@@ -1,0 +1,6 @@
+[submodule "sync/blog"]
+	path = sync/blog
+	url = https://github.com/sattellite/blog.git
+[submodule "themes/blogggg"]
+	path = themes/blogggg
+	url = https://github.com/sattellite/blogggg-hugo-theme.git
