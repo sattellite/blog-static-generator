@@ -20,6 +20,11 @@ NOTES=${ROOT}/content/notes
 # Go to root repo directory for execute all commands
 cd ${ROOT}
 
+# Sync static generator
+git reset --hard
+git fetch --all
+git rebase
+
 # Renew blog posts
 git submodule update --init
 git submodule update sync/blog
