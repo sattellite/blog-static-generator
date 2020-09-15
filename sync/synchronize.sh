@@ -21,7 +21,8 @@ NOTES=${ROOT}/content/notes
 cd ${ROOT}
 
 # Renew blog posts
-git submodule update sync/blog --remote --merge
+git submodule update --init
+git submodule update sync/blog
 
 # Copy images to static
 cp -a ${BLOG}/images ${ROOT}/static
