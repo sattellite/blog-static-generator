@@ -463,3 +463,9 @@ twitter-widget,
     background-image: none;
   }
 }
+
+@media (max-width: 575.98px) {
+  .not-found {
+    background-size: 100px auto;
+  }
+}
