@@ -20,8 +20,16 @@ NOTES=${ROOT}/content/notes
 # Go to root repo directory for execute all commands
 cd ${ROOT}
 
-# Renew blog posts
-git submodule update sync/blog --remote --merge
+# Sync static generator
+git reset --hard
+git fetch --all
+git rebase
+
+# Renew blog posts and themes
+git submodule sync
+git submodule init
+git submodule update
+git submodule foreach "(git checkout master && git pull --ff origin master && git push origin master) || true"
 
 # Copy images to static
 cp -a ${BLOG}/images ${ROOT}/static
