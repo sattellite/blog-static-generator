@@ -1,0 +1,3 @@
+{{ define "main" }}
+{{ partial "posts.html" (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+{{ end }}

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ru">
+    {{- partial "head.html" . -}}
+    <body>
+        {{- partial "header.html" . -}}
+        {{- block "main" . }}{{- end }}
+        {{- partial "footer.html" . -}}
+
+        <script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+        {{ $js := readFile "static/js/main.js" | sha256 }}
+        <script src="/js/main.js?{{ substr $js 0 8 }}"></script>
+    </body>
+</html>

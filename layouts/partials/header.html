@@ -1,0 +1,36 @@
+<header class="header">
+  <a href="#start-of-content" class="show-on-focus skip-to-content">Skip to content</a>
+  <nav class="nav-header">
+    <div class="nav-left">
+      <a href="/">{{ .Site.Title }}</a>
+    </div>
+    <div class="nav-right">
+      <span class="author">{{ $.Site.Params.author }}</span>
+      <span class="nav-icons">
+        {{ with .Site.Params.github }}
+        <a href="https://github.com/{{ . }}" title="Link to my github profile" rel="noopener" target="_blank">
+          <span class="icon">{{ readFile "static/images/github.svg" | safeHTML }}</span>
+        </a>
+        {{ end }}
+        {{ with .Site.Params.twitter }}
+        <a href="https://twitter.com/{{ . }}" title="Link to my twitter profile" rel="noopener" target="_blank">
+          <span class="icon">{{ readFile "static/images/twitter.svg" | safeHTML }}</span>
+        </a>
+        {{ end }}
+        {{ with .Site.Params.telegram }}
+        <a href="tg://resolve?domain={{ . }}" title="Link to write me in telegram" target="_blank">
+          <span class="icon">{{ readFile "static/images/telegram.svg" | safeHTML }}</span>
+        </a>
+        {{ end }}
+        {{ with .Site.Params.email }}
+        <a href="mailto:{{ . }}" title="Link to write me email" target="_blank">
+          <span class="icon">{{ readFile "static/images/mail.svg" | safeHTML }}</span>
+        </a>
+        {{ end }}
+        <a href="/index.xml" title="Link to RSS" target="_blank">
+          <span class="icon">{{ readFile "static/images/rss.svg" | safeHTML }}</span>
+        </a>
+      </span>
+  </div>
+  </nav>
+</header>

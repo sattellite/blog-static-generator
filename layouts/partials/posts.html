@@ -1,0 +1,17 @@
+<main id="start-of-content" class="article-list" role="list">
+  {{ $y := "" }}
+  {{ range . }}
+  <div class="row" role="listitem">
+    {{ if ne $y .Date.Year }}
+    <div class="year show">{{ .Date.Year }}</div>
+    {{ $y = .Date.Year }}
+    {{ else }}
+    <div class="year">{{ .Date.Year }}</div>
+    {{ end }}
+    <div class="month">-{{ .Date.Format "01" }}</div>
+    <a href="{{ .Permalink }}" class="title text-reduce" title="{{ .Title }}">{{ .Title }}</a>
+  </div>
+  {{ end }}
+</main>
+
+

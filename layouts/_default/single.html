@@ -1,0 +1,13 @@
+{{ define "main" }}
+<main id="start-of-content">
+  <div class="date">
+    <div class="publish">Опубликовано: {{ .Date.Format "2006-01-02"}}</div>
+    {{ if .Params.edit }}
+    <div class="edit">Обновлено: {{ dateFormat "2006-01-02" .Params.edit }}</div>
+    {{ end }}
+  </div>
+  {{ .Content }}
+</main>
+
+{{ end }}
+

@@ -1,0 +1,27 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    {{ if (eq .Page.Kind "taxonomy") }}
+    Posts tagged with
+    {{ end }}
+    {{ .Title }}
+    {{ if (and $.Site.Params.includeAuthorInTitle (in (slice "page" "taxonomy") .Page.Kind)) }} | {{ $.Site.Params.author }} {{ end }}
+  </title>
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ with $.Site.Home.OutputFormats.Get "rss" -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
+  {{ end -}}
+
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+  {{ $css := readFile "static/css/style.css" | sha256 }}
+  <link rel="stylesheet" type="text/css" href="/css/style.css?{{ substr $css 0 8 }}">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=PT+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+
+  {{ template "_internal/opengraph.html" . }}
+</head>

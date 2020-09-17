@@ -1,7 +1,6 @@
 baseURL = "https://b.sattellite.me/"
 languageCode = "ru-RU"
 title = "Blogggg"
-theme="blogggg"
 
 [permalinks]
 posts = "/:year/:month/:filename"
