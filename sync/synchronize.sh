@@ -26,9 +26,10 @@ git fetch --all
 git rebase
 
 # Renew blog posts and themes
-git submodule foreach 'git checkout master; git pull origin master' && git pull origin master && git submodule update --init --recursive
-#git submodule update --init
-#git submodule update sync/blog
+git submodule sync
+git submodule init
+git submodule update
+git submodule foreach "(git checkout master && git pull --ff origin master && git push origin master) || true"
 
 # Copy images to static
 cp -a ${BLOG}/images ${ROOT}/static
