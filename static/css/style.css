@@ -81,7 +81,7 @@ body {
   will-change: opacity;
 }
 .show {
-  opacity: 1;
+  opacity: 1 !important;
 }
 .row:hover .year,
 .row:hover .month,
@@ -465,7 +465,27 @@ twitter-widget,
 }
 
 @media (max-width: 575.98px) {
+  main {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
   .not-found {
     background-size: 100px auto;
+  }
+  .year,
+  .month {
+    opacity: 0.85;
+  }
+
+  .text-reduce {
+    white-space: initial;
+    text-overflow: initial;
+  }
+
+  .row {
+    margin-bottom: 0.5em;
+  }
+  .row:last-child {
+    margin-bottom: 0;
   }
 }
