@@ -1,3 +1,6 @@
 content/
 public/
+static/images/*.png
+static/images/*.jpg
+static/images/*.gif
 .content_sha1
