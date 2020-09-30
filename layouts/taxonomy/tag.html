@@ -1,0 +1,20 @@
+{{ define "main" }}
+<main id="start-of-content" class="taxonomy">
+  <h1>Статьи с тегом "{{ .Title }}"</h1>
+  {{ $y := "" }}
+  {{ range .Pages }}
+  <div class="article-list" role="list">
+    <div class="row" role="listitem">
+      {{ if ne $y .Date.Year }}
+      <div class="year show">{{ .Date.Year }}</div>
+      {{ $y = .Date.Year }}
+      {{ else }}
+      <div class="year show">{{ .Date.Year }}</div>
+      {{ end }}
+      <div class="month show">-{{ .Date.Format "01" }}</div>
+      <a href="{{ .Permalink }}" class="title text-reduce" title="{{ .Title }}">{{ .Title }}</a>
+    </div>
+  </div>
+  {{ end }}
+</main>
+{{ end }}

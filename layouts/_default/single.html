@@ -6,6 +6,14 @@
     <div class="edit">Обновлено: {{ dateFormat "2006-01-02" .Params.edit }}</div>
     {{ end }}
   </div>
+  {{ if .Params.tags }}
+    <div class="article-tags" role="list">
+      Теги:
+      {{ range .Params.tags }}
+        <a role="listitem" href="/tags/{{ . | urlize }}">{{ . }}</a>
+      {{ end }}
+    </div>
+  {{ end }}
   {{ .Content }}
 </main>
 

@@ -1,0 +1,19 @@
+{{ define "main" }}
+<main id="start-of-content" class="taxonomy">
+  {{ if eq .Page.RelPermalink "/tags/"  }}
+    <h1>Теги</h1>
+    <div class="tags-list" role="list">
+    {{ range .Site.Taxonomies.tags }}
+      <div class="item" role="listitem">
+        <a href="{{ .Page.Permalink }}" class="tag text-reduce" title="{{ .Page.Title }}">{{ .Page.Title }}</a><span class="counter">({{ .Count }})</span>
+      </div>
+      {{ end }}
+    </div>
+  {{ else }}
+    {{ .Page.RelPermalink }}
+    {{ range .Pages}}
+      <a href="{{ .Page.Permalink }}" class="tag text-reduce" title="{{ .Page.Title }}">{{ .Page.Title }}</a>
+    {{ end }}
+  {{ end }}
+</main>
+{{ end }}

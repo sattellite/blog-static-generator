@@ -80,6 +80,9 @@ body {
   opacity: 0;
   will-change: opacity;
 }
+.month {
+  padding-right: 0.5em;
+}
 .show {
   opacity: 1 !important;
 }
@@ -88,9 +91,6 @@ body {
 .row:active .year,
 .row:active .month {
   opacity: 1;
-}
-.title {
-  padding-left: 0.5em;
 }
 .text-reduce {
   white-space: nowrap;
@@ -411,7 +411,28 @@ twitter-widget,
   background-position-y: 100%;
   background-size: 200px auto;
 }
-
+.taxonomy {
+  padding-top: 0;
+}
+.tags-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.counter {
+  padding-right: 0.5em;
+}
+.article-tags {
+  font-size: 18px;
+}
+.article-tags a::after {
+  display: inline;
+  content: ',';
+}
+.article-tags a:last-child::after {
+  content: '';
+}
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #24292e;
