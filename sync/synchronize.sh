@@ -38,16 +38,16 @@ function preparePost {
         _TITLE=${val}
       elif [ "${key}" == "date" ]; then
         _DATES[0]=${val}
+      elif [ "${key}" == "noedit" ]; then
+        _DATES[1]=""
       elif [ "${key}" == "edit" ]; then
         _DATES[1]=${val}
       elif [ "${key}" == "draft" ]; then
         _DRAFT=${val}
+      elif [ "${key}" == "tags" ]; then
+        extra="${extra}\n${key}: [${val}]"
       else
-        if [[ "${val}" == *","* ]]; then
-          extra="${extra}\n${key}: [${val}]"
-        else
-          extra="${extra}\n${key}: ${val}"
-        fi
+        extra="${extra}\n${key}: ${val}"
       fi
       ((cursor += 1))
     done
