@@ -40,6 +40,8 @@ function preparePost {
         _DATES[0]=${val}
       elif [ "${key}" == "edit" ]; then
         _DATES[1]=${val}
+      elif [ "${key}" == "draft" ]; then
+        _DRAFT=${val}
       else
         if [[ "${val}" == *","* ]]; then
           extra="${extra}\n${key}: [${val}]"
