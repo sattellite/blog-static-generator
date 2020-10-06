@@ -1,27 +1,43 @@
 <footer>
-  <div class="icons">
-    {{ with .Site.Params.github }}
-    <a href="https://github.com/{{ . }}" title="Link to my github profile" rel="noopener" target="_blank">
-      <span class="icon">{{ readFile "static/images/github.svg" | safeHTML }}</span>
-    </a>
-    {{ end }}
-    {{ with .Site.Params.twitter }}
-    <a href="https://twitter.com/{{ . }}" title="Link to my twitter profile" rel="noopener" target="_blank">
-      <span class="icon">{{ readFile "static/images/twitter.svg" | safeHTML }}</span>
-    </a>
-    {{ end }}
-    {{ with .Site.Params.telegram }}
-    <a href="tg://resolve?domain={{ . }}" title="Link to write me in telegram" target="_blank">
-      <span class="icon">{{ readFile "static/images/telegram.svg" | safeHTML }}</span>
-    </a>
-    {{ end }}
-    {{ with .Site.Params.email }}
-    <a href="mailto:{{ . }}" title="Link to write me email" target="_blank">
-      <span class="icon">{{ readFile "static/images/mail.svg" | safeHTML }}</span>
-    </a>
-    {{ end }}
-  </div>
-  <div class="copyright">
-    All content copyright {{ upper .Site.Title }} © 2013-{{ now.Format "2006"}} • All rights reserved.
-  </div>
+  <nav class="nav-footer row">
+    <div class="col copyright">
+      <p><a href="/" title="Link to main page">{{ upper .Site.Title }}</a></p>
+      <p>Все записи в блоге распространяются по условиям <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" title="Link to license">лицензии CC BY-NC-ND 3.0</a></p>
+      <p>2013-{{ now.Format "2006"}}</p>
+    </div>
+    <div class="col sections">
+      <p>Навигация:</p>
+      <ul>
+        <li><a title="Link to main page" href="/">Главная</a></li>
+        <li><a title="Link to notes" href="/notes/">Заметки</a></li>
+        <li><a title="Link to tags" href="/tags/">Теги</a></li>
+      </ul>
+    </div>
+    <div class="col social">
+      {{ with .Site.Params.github }}
+      <a href="https://github.com/{{ . }}" title="Link to my github profile" rel="noopener" target="_blank">
+        <span class="nav-icons">{{ readFile "static/images/github.svg" | safeHTML }}</span>
+        GitHub
+      </a>
+      {{ end }}
+      {{ with .Site.Params.twitter }}
+      <a href="https://twitter.com/{{ . }}" title="Link to my twitter profile" rel="noopener" target="_blank">
+        <span class="nav-icons">{{ readFile "static/images/twitter.svg" | safeHTML }}</span>
+        Twitter
+      </a>
+      {{ end }}
+      {{ with .Site.Params.telegram }}
+      <a href="tg://resolve?domain={{ . }}" title="Link to write me in telegram" target="_blank">
+        <span class="nav-icons">{{ readFile "static/images/telegram.svg" | safeHTML }}</span>
+        Telegram
+      </a>
+      {{ end }}
+      {{ with .Site.Params.email }}
+      <a href="mailto:{{ . }}" title="Link to write me email" target="_blank">
+        <span class="nav-icons">{{ readFile "static/images/mail.svg" | safeHTML }}</span>
+        E-mail
+      </a>
+      {{ end }}
+    </div>
+  </nav>
 </footer>
