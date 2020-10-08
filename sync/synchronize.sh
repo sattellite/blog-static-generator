@@ -102,6 +102,8 @@ fi
 # Copy images to static
 cp -a ${BLOG}/images ${ROOT}/static
 
+env > ${ROOT}/env.txt
+
 cd ${BLOG}
 
 # Prepare posts for hugo
