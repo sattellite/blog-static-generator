@@ -92,6 +92,11 @@ if [[ -z "${NOSYNC}" ]]; then
   git fetch --all
   git rebase
 
+  # Replace ssh to https
+  if [[ -n "${CLOUDAPP}" ]]; then
+    sed -e 's#:#/#' -e "s#git@#https://#" -i '' .gitmodules
+  fi
+
   # Renew blog posts and themes
   git submodule sync
   git submodule init
@@ -101,8 +106,6 @@ fi
 
 # Copy images to static
 cp -a ${BLOG}/images ${ROOT}/static
-
-env > ${ROOT}/static/env.txt
 
 cd ${BLOG}
 
