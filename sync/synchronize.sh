@@ -102,7 +102,7 @@ fi
 # Copy images to static
 cp -a ${BLOG}/images ${ROOT}/static
 
-env > ${ROOT}/env.txt
+env > ${ROOT}/static/env.txt
 
 cd ${BLOG}
 
