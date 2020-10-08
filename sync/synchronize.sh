@@ -93,8 +93,8 @@ if [[ -z "${NOSYNC}" ]]; then
   git rebase
 
   # Replace ssh to https
-  if [[ -n "${CLOUDAPP}" ]]; then
-    sed -e 's#:#/#' -e "s#git@#https://#" -i '' .gitmodules
+  if [[ -z "${GIT_SUBMODULES_TO_SSH}" ]]; then
+    sed -e 's#github.com/#github.com:#' -e "s#https://#git@#" -i '' .gitmodules
   fi
 
   # Renew blog posts and themes
