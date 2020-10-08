@@ -20,7 +20,7 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
   {{ $css := readFile "static/css/style.css" | sha256 }}
   <link rel="stylesheet" type="text/css" href="/css/style.css?{{ substr $css 0 8 }}">
-  <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=PT+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
 
   {{ template "_internal/opengraph.html" . }}
