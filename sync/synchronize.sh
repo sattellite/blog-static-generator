@@ -93,7 +93,7 @@ if [[ -z "${NOSYNC}" ]]; then
   git rebase
 
   # Replace ssh to https
-  if [[ -z "${GIT_SUBMODULES_TO_SSH}" ]]; then
+  if [[ ! -z "${GIT_SUBMODULES_TO_SSH}" ]]; then
     sed -e 's#github.com/#github.com:#' -e "s#https://#git@#" -i '' .gitmodules
   fi
 
