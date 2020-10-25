@@ -9,5 +9,11 @@
         <script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
         {{ $js := readFile "static/js/main.js" | sha256 }}
         <script src="/js/main.js?{{ substr $js 0 8 }}"></script>
+
+        {{ if (eq (.Scratch.Get "comments") "true") }}
+        <script src="/js/comments.js"></script>
+        <script src="/comments/web/embed.js" defer></script>
+        {{ end }}
+
     </body>
 </html>
