@@ -11,7 +11,8 @@
         <script src="/js/main.js?{{ substr $js 0 8 }}"></script>
 
         {{ if (eq (.Scratch.Get "comments") "true") }}
-        <script src="/js/comments.js"></script>
+        {{ $cjs := readFile "static/js/comments.js" | sha256 }}
+        <script src="/js/comments.js?{{ substr $js 0 8 }}"></script>
         <script src="/comments/web/embed.js" defer></script>
         {{ end }}
 
