@@ -465,6 +465,13 @@ twitter-widget,
 .article-tags a:last-child::after {
   content: '';
 }
+
+#remark42 {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #24292e;
