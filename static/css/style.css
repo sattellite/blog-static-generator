@@ -187,7 +187,7 @@ main:not(.article-list) a:not(.headerlink):visited:focus {
   border-bottom-color: blue;
 }
 blockquote {
-  background-color: #ffffa1;
+  background-color: #fff8cc;
   padding: 1em 2em;
   margin: 0;
 }
