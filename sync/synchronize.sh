@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 function preparePost {
   local f=${1}
