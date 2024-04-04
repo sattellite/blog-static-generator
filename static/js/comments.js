@@ -1,3 +1,4 @@
+/* email me to contact
 ;
 var remark_config = {
   host: "https://b.sattellite.me/comments",
@@ -9,3 +10,4 @@ var remark_config = {
 
 window.matchMedia('(prefers-color-scheme: dark)')
   .addListener(e => window.REMARK42.changeTheme(e.matches ? 'dark' : 'light'));
+*/
