@@ -28,13 +28,13 @@ function preparePost {
     local lines=$(echo "${fm}"|wc -l)
     cursor=1
     while [ ${cursor} -le $((lines+1)) ]; do
-      local line_str=$(echo "${fm}" | sed -n ${cursor}'p')
+      local line_str=$(echo "${fm}" | sed -n ${cursor}'p' | sed -e 's/^[ \t]*//'| sed -e 's/[ \t]*$//')
       if [ "x" == "x${line_str}" ]; then
         ((cursor += 1))
         continue
       fi
-      local key=$(echo ${line_str} | sed -e 's/\(.*\):.*/\1/')
-      local val=$(echo ${line_str} | sed -e 's/.*:\(.*\)/\1/')
+      local key=$(echo "${line_str}" | sed -e 's/^\([^:]*\):.*/\1/' | tr -d '[:space:]')
+      local val=$(echo "${line_str}" | sed -e 's/^[^:]*:\s*//' | tr -d '[:space:]')
       if [ "${key}" == "title" ]; then
         _TITLE=${val}
       elif [ "${key}" == "date" ]; then
