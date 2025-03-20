@@ -102,7 +102,7 @@ if [[ -z "${NOSYNC}" ]]; then
   git submodule sync
   git submodule init
   git submodule update
-  git submodule foreach "(git checkout master && git pull --ff origin master && git push origin master) || true"
+  git submodule foreach "(git clean -f -d && git checkout master && git pull --ff origin master && git push origin master) || true"
 fi
 
 # Copy images to static
