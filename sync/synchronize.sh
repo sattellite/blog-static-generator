@@ -4,17 +4,17 @@ set -e
 GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 function preparePost {
-  local f=${1}
-  local p=${2}
-  local _FILE=$(echo $(basename ${f}) |sed -e "s#[0-9]...-[0-9].-[0-9].-\\(.*\\)#\\1#")
-  local _DATES=($(git log --format=%aI --reverse ${f} | sed -e 1b -e '$!d'))
-  local _TITLE=$(sed -n "s/^# \\(.*\\)/\\1/p" ${f} | sed -e 1b -e '1!d')
+  local f="${1}"
+  local p="${2}"
+  local _FILE=$(echo "$(basename "${f}")" |sed -e "s#[0-9]...-[0-9].-[0-9].-\\(.*\\)#\\1#")
+  local _DATES=($(git log --format=%aI --reverse "${f}" | sed -e 1b -e '$!d'))
+  local _TITLE=$(sed -n "s/^# \\(.*\\)/\\1/p" "${f}" | sed -e 1b -e '1!d')
   local _DRAFT="false"
 
   local extra=""
   local cursor=1
   # If first line is front matter start
-  if [ "$(head -n1 ${f})" == "---" ]; then
+  if [ "$(head -n1 "${f}")" == "---" ]; then
     # Extract front matter https://stackoverflow.com/a/20943542/1489324
     local fm=$(sed -n '/---/ {
       :loop
@@ -22,7 +22,7 @@ function preparePost {
       /---/q
       p
       b loop
-    }' ${f})
+    }' "${f}")
 
     # Parsing values
     local lines=$(echo "${fm}"|wc -l)
@@ -56,23 +56,23 @@ function preparePost {
     ((cursor+=2))
   fi
 
-  echo -e "---\ntitle: ${_TITLE}\ndate: ${_DATES[0]}" > ${p}/${_FILE}
+  echo -e "---\ntitle: ${_TITLE}\ndate: ${_DATES[0]}" > "${p}/${_FILE}"
   if [ "x${_DATES[1]}" != "x" ]; then
-    echo "edit: ${_DATES[1]}" >> ${p}/${_FILE}
+    echo "edit: ${_DATES[1]}" >> "${p}/${_FILE}"
   fi
-  echo -e "${extra}" >> ${p}/${_FILE}
-  echo -e "draft: ${_DRAFT}\n---\n" >> ${p}/${_FILE}
+  echo -e "${extra}" >> "${p}/${_FILE}"
+  echo -e "draft: ${_DRAFT}\n---\n" >> "${p}/${_FILE}"
 
   if [[ ! -z "${NOSYNC}" ]]; then
     echo -e "---\ntitle: ${_TITLE}\ndate: ${_DATES[0]}\nfile: ${_FILE}"
   fi
 
-  sed -n "${cursor},\$p" ${f} >> ${p}/${_FILE}
+  sed -n "${cursor},\$p" "${f}" >> "${p}/${_FILE}"
 }
 
 TZ=Europe/Moscow
 # Go to script directory for correct define all paths
-cd $(dirname ${BASH_SOURCE[0]})
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Path of the repository
 ROOT=$(git rev-parse --show-toplevel)
@@ -85,7 +85,7 @@ POSTS=${ROOT}/content/posts
 NOTES=${ROOT}/content/notes
 
 # Go to root repo directory for execute all commands
-cd ${ROOT}
+cd "${ROOT}"
 
 if [[ -z "${NOSYNC}" ]]; then
   # Sync static generator
@@ -106,24 +106,24 @@ if [[ -z "${NOSYNC}" ]]; then
 fi
 
 # Copy images to static
-cp -a ${BLOG}/images ${ROOT}/static
+cp -a "${BLOG}/images" "${ROOT}/static"
 
-cd ${BLOG}
+cd "${BLOG}"
 
 # Prepare posts for hugo
 if [ -d posts ]; then
-  mkdir -p ${POSTS}
-  rm -f ${POSTS}/*.md
-  for f in $(ls posts/*.md); do
-    preparePost "${f}" ${POSTS}
+  mkdir -p "${POSTS}"
+  rm -f "${POSTS}"/*.md
+  for f in posts/*.md; do
+    preparePost "${f}" "${POSTS}"
   done
 fi
 
 # Prepare notes for hugo
 if [ -d notes ]; then
-  mkdir -p ${NOTES}
-  rm -f ${NOTES}/*.md
-  for f in $(ls notes/*.md); do
-    preparePost "${f}" ${NOTES}
+  mkdir -p "${NOTES}"
+  rm -f "${NOTES}"/*.md
+  for f in notes/*.md; do
+    preparePost "${f}" "${NOTES}"
   done
 fi
